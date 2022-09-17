@@ -14,7 +14,7 @@ const reducer = (state, action) => {
 };
 
 const UseReduceExample = () => {
-  const [state, dispatch] = useReducer(reducer, initialCount );
+  const [state, dispatch] = useReducer(reducer, initialCount);
 
   return (
     <>
