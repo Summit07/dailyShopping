@@ -4,12 +4,17 @@ import { BsFillCartFill } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaUserFriends, FaWallet } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
-
+import { users } from "../data/users.js";
+// import Table from "./Table.js";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   // const [user, setUser] = useState("");
-  const [toggle, setToggle] = useState(true);
+  const [search, setSearch] = useState("");
+
+  const searchByNumber = (data) => {
+    return data.filter((user) => user.mobile_num.includes(search));
+  };
 
   return (
     <div className="max-w-[1640px] mx-auto flex  justify-between items-center p-4">
@@ -30,17 +35,24 @@ const Navbar = () => {
             className="bg-transparent p-2 w-full focus:outline-none"
             type="text"
             placeholder="Search by Mobile Number"
+            onChange={(e) => setSearch(e.target.value)}
           />
+          {/* <Table data={search(users)} /> */}
+          {/* <ul>
+            {users
+              .filter((user) => user.mobile_num.includes(search))
+              .map((user) => (
+                <li key={user.id}> {user.name}</li>
+              ))}
+          </ul> */}
+          <button
+            className="bg-black text-white rounded-full p-2"
+            onClick={() => searchByNumber(users)}
+          >
+            Delivery
+          </button>
         </div>
-        <div className="hidden  lg:flex items-center bg-gray-200 rounded-full p-1 text-[14px]">
-          <div onClick={() => setToggle(!toggle)} className="">
-            {toggle ? (
-              <p className="bg-black text-white rounded-full p-2">Delivery</p>
-            ) : (
-              <p className="p-2">Pickup</p>
-            )}
-          </div>
-        </div>
+
         <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full">
           <BsFillCartFill size={20} className="mr-2" /> Cart
         </button>

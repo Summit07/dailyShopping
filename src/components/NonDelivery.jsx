@@ -1,8 +1,8 @@
 import React from "react";
-import { categories } from "../data/nonDelivery.js";
+import { categories, data } from "../data/nonDelivery.js";
 
 const NonDelivery = () => {
-  console.log(categories);
+  // console.log(categories);
   return (
     <>
       <div className="max-w-[1640px] m-auto px-4 py-12">
@@ -18,6 +18,33 @@ const NonDelivery = () => {
             >
               <h2 className="font-bold sm:text-xl">{item.name}</h2>
               <img src={item.image} alt={item.name} className="w-20" />
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+          {data.map((item, index) => (
+            <div
+              key={index}
+              className="border shadow-lg rounded-lg hover:scale-105 duration-300"
+            >
+              <img
+                src={item.image}
+                alt={item.category}
+                className="w-full h-[200px] object-cover rounded-t-lg"
+              />
+              <div className="flex  justify-between px-2 py-4">
+                <div>
+                  <p className="font-bold">{item.name}</p>
+                  <p className="font-bold">{item.price}</p>
+                </div>
+                <div>
+                  <p>
+                    <span className="bg-orange-500 text-white p-1 rounded-full">
+                      {item.price}
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
